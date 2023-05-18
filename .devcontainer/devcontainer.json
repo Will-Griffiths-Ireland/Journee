@@ -2,7 +2,7 @@
   "name": "Codeinstitute template",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace/template",
+  "workspaceFolder": "/",
 
   "customizations": {
     "vscode": {
@@ -108,5 +108,5 @@
     }
   },
 
-  "remoteUser": "codeany"
+  "remoteUser": "WillG"
 }
