@@ -41,4 +41,6 @@ All my intial wireframe concepts
 
 ## Technoligies & Tools
 
+* Bootstrap 5.3
+
 ## Depployment
