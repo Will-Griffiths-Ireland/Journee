@@ -51,7 +51,28 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     # Journee Apps
     'showcase',
+    'journal',
+    # Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
+    # rich text field
+    'djrichtextfield'
 ]
+
+DJRICHTEXTFIELD_CONFIG = {
+    'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
+    'init_template': 'djrichtextfield/init/ckeditor.js',
+    'settings': {
+        'toolbar': [
+            ['Format', 'Bold', 'Italic', 'Underline'],
+            ['BulletedList', 'NumberedList'],
+            ['Undo', 'Redo'],
+            ['Maximize']
+
+        ],
+        'format_tags': 'p'
+    }
+}
 
 SITE_ID = 1
 
@@ -95,14 +116,12 @@ TEMPLATES = [
 
 
 
-AUTHENTICATION_BACKENDS = [
-    
+AUTHENTICATION_BACKENDS = [  
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-    
+    'allauth.account.auth_backends.AuthenticationBackend', 
 ]
 
 WSGI_APPLICATION = 'journee.wsgi.application'
@@ -166,6 +185,11 @@ LOGIN_REDIRECT_URL = '/'
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# Cloudinary Storage
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
