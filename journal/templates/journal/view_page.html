@@ -1,0 +1,31 @@
+{% extends 'core.html'%}
+
+{% block page_title%} {{ journal_page.journal_date }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="journal_page_view mt-3 p1">
+        <h1>{{ journal_page.journal_date }}</h1>
+        <h2>{{ journal_page.title }}</h2>
+        <div class="journal_day_image">
+            <img src="{{ journal_page.day_image.url }}" alt="Photo for this day">
+        </div>
+
+        <div class="journal_self_image">
+            <img class="journal_self_image" src="{{ journal_page.self_image.url }}" alt="Self image for this day">
+        </div>
+        <div class="journal_page_content">
+            <p>{{ journal_page.content|safe }}</p>
+        </div>
+        {% if request.user == journal_page.user %}
+        <div class="text-center">
+            <a href="#" class="btn btn-primary w-25">Edit</a>
+            <a href="#" class="btn btn-primary w-25">Tear Out</a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

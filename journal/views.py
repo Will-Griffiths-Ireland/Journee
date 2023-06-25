@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from .models import Journal
 from .forms import JournalForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -12,6 +12,16 @@ class Journals(ListView):
     template_name = "journal/journals.html"
     model = Journal
     context_object_name = "journals"
+
+
+class ViewJournalPage(DetailView):
+    """
+    View a journal entry
+    """
+
+    template_name = "journal/view_page.html"
+    model = Journal
+    context_object_name = "journal_page"
 
 
 class AddJournalPage(LoginRequiredMixin, CreateView):

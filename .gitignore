@@ -10,3 +10,4 @@ cloudinary_python.txt
 env.py
 *.sqlite3
 db.sqlite3
+settings.json

@@ -11,12 +11,13 @@
 
     {% for journal_page in journals %}
     {% if request.user == journal_page.user %}
-    <a href="" class="journal_pages" aria-label="Click to view {{journal_page.journal_date }} {{journal_page.title }}">
+    <a href="{% url 'view_journal_page' journal_page.id %}" class="journal_pages"
+        aria-label="Click to view {{ journal_page.journal_date }} {{ journal_page.title }}">
         <div class="card m-2" style="width: 18rem;">
             <div class="card-body">
                 <h2 class="card-title text-center"> {{journal_page.journal_date}}</h2>
                 <img src="{{ journal_page.day_image.url }}" class="card-img-top" alt="Journal cover image">
-                <p class="card-text text-center">{{journal_page.title}}</p>
+                <p class="card-text text-center">{{ journal_page.title }}</p>
             </div>
 
         </div>

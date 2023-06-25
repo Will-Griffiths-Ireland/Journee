@@ -24,7 +24,7 @@
 }
 
 * {
-    font-family: var(--geologica);
+    font-family: var(--cherry_bomb);
 }
 
 /* ###### NAVBAR STYLING ###### */
@@ -101,4 +101,36 @@ footer a {
 
 .journal_pages:hover {
     cursor: pointer;
+}
+
+/* ###### JOURNAL PAGE VIEW ###### */
+
+.journal_page_view {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 2rem;
+    border: 1px solid var(--black);
+    box-shadow: var(--box_shadow);
+    padding: 2rem;
+}
+
+.journal_day_image {
+    overflow: hidden;
+    display: flex;
+    border-radius: 1rem;
+    height: 30dvh;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.journal_self_image {
+    overflow: hidden;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
 }
