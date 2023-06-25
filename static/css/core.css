@@ -85,3 +85,20 @@ footer a {
     text-decoration: none;
     color: var(--black);
 }
+
+/* ###### JOURNAL PAGE PREVIEW CARDS ###### */
+
+.card {
+    height: 95%;
+    margin: 1rem;
+    box-shadow: var(--box_shadow);
+}
+
+.journal_pages {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.journal_pages:hover {
+    cursor: pointer;
+}
