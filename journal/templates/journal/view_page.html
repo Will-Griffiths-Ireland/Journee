@@ -21,7 +21,7 @@
         {% if request.user == journal_page.user %}
         <div class="text-center">
             <a href="#" class="btn btn-primary w-25">Edit</a>
-            <a href="#" class="btn btn-primary w-25">Tear Out</a>
+            <a href="{% url 'remove_journal_page' journal_page.id %}" class="btn btn-primary w-25">Remove Page</a>
         </div>
         {% endif %}
 

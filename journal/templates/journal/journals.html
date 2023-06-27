@@ -3,9 +3,10 @@
 
 {% block page_title %}Journal{% endblock %}
 
+
 {% block content %}
 <h1 class="text-center p-2">
-    {{ request.user }}'s Journal Pages
+    {{ request.user|title }}'s Journal Pages
 </h1>
 <div class="container d-flex flex-row flex-wrap justify-content-center">
 
