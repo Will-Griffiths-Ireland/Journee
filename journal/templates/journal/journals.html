@@ -1,4 +1,5 @@
 {% extends 'core.html' %}
+{% load static %}
 
 
 {% block page_title %}Journal{% endblock %}
@@ -16,8 +17,12 @@
         aria-label="Click to view {{ journal_page.journal_date }} {{ journal_page.title }}">
         <div class="card m-2" style="width: 18rem;">
             <div class="card-body">
-                <h2 class="card-title text-center"> {{journal_page.journal_date}}</h2>
+                <h2 class="card-title text-center"> {{ journal_page.journal_date }}</h2>
+                {% if journal_page.day_image %}
                 <img src="{{ journal_page.day_image.url }}" class="card-img-top" alt="Journal cover image">
+                {% else %}
+                <img src="{% static 'images/quill_logo.webp' %}" class="card-img-top" alt="Journal cover image">
+                {% endif %}
                 <p class="card-text text-center">{{ journal_page.title }}</p>
             </div>
 

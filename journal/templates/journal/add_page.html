@@ -2,18 +2,33 @@
 
 {% block page_title %} Add Journal Page {% endblock %}
 
-
 {% block content %}
+
+{% with existing_page=journals.0.journalPageExistsForToday %}
+{% if existing_page %}
+
+<div class="container position-absolute top-50 start-50 translate-middle">
+    <h1 class="text-center">You already have a page for today {{ existing_page }}</h1>
+    <div class="text-center">
+        <a href="/journal/{{ existing_page }}/" class="btn btn-primary mt-2">Display Page</a>
+    </div>
+    </form>
+</div>
+
+{% else %}
+
 <div class="container">
-    <form method="POST" enctype="multipart/form-data" class="p-2 form">
-        <h1 class="text-center">Add Journal Page - {{ journal.current_date }}</h1>
+    <form method="POST" enctype="multipart/form-data" class="p-5 form mt-2">
+        <h1 class="text-center">Add Journal Page </h1>
         {% csrf_token %}
         {{ form.media }}
         {{ form|crispy }}
         <div class="text-center">
-            <button type="submit" class="btn btn-primary mt-2">Add Page</button>
+            <button type="submit" class="btn btn-primary mt-2">Add Page To Journal</button>
         </div>
 
     </form>
 </div>
+{% endif %}
+{% endwith %}
 {% endblock %}

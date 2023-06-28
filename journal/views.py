@@ -25,14 +25,13 @@ class ViewJournalPage(DetailView):
     context_object_name = "journal_page"
 
 
-class AddJournalPage(LoginRequiredMixin, CreateView):
+class AddJournalPage(LoginRequiredMixin, CreateView, ListView, DetailView):
     """
     Add a page to the journal
     """
 
-    current_date = "MODNAYT"
-
     template_name = "journal/add_page.html"
+    context_object_name = "journals"
     model = Journal
     form_class = JournalForm
     success_url = "/journal/journals/"
