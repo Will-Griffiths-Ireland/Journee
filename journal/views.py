@@ -1,8 +1,15 @@
-from django.views.generic import CreateView, ListView, DetailView, DeleteView
+from django.views.generic import (
+    CreateView,
+    ListView,
+    DetailView,
+    DeleteView,
+    UpdateView,
+)
 from .models import Journal
 import datetime
 from .forms import JournalForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
 
 
 class Journals(ListView):
@@ -46,6 +53,20 @@ class RemovePage(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     model = Journal
     success_url = "/journal/journals/"
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
+class EditPage(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """Update journal page"""
+
+    template_name = "journal/edit_page.html"
+    model = Journal
+    form_class = JournalForm
+
+    def get_success_url(self):
+        return reverse_lazy("view_journal_page", kwargs={"pk": self.object.pk})
 
     def test_func(self):
         return self.request.user == self.get_object().user
