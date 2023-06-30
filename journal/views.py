@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.views.generic import (
     CreateView,
     ListView,
@@ -10,6 +12,7 @@ import datetime
 from .forms import JournalForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 
 class Journals(ListView):
@@ -30,6 +33,29 @@ class ViewJournalPage(DetailView):
     template_name = "journal/view_page.html"
     model = Journal
     context_object_name = "journal_page"
+
+
+class JournalSearch(ListView):
+    """
+    View a journal entry
+    """
+
+    template_name = "journal/journal_search.html"
+    model = Journal
+    context_object_name = "journal_search"
+
+    def get_queryset(self, **kwargs):
+        query = self.request.GET.get("search_query")
+        if query:
+            journals = self.model.objects.filter(
+                Q(is_public=True) &
+                Q(content__icontains=query)
+            )
+        else:
+            journals = self.model.objects.filter(
+                Q(is_public=True)
+            )
+        return journals
 
 
 class AddJournalPage(LoginRequiredMixin, CreateView, ListView, DetailView):

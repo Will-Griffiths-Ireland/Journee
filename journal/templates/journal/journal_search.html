@@ -1,0 +1,34 @@
+{% extends 'core.html' %}
+{% load static %}
+
+
+{% block page_title %}Journal Search{% endblock %}
+
+
+{% block content %}
+<h1 class="text-center p-2">
+    Search Results
+</h1>
+<div class="container d-flex flex-row flex-wrap justify-content-center">
+
+    {% for journal_page in journal_search %}
+    <a href="{% url 'view_journal_page' journal_page.id %}" class="journal_pages"
+        aria-label="Click to view  {{ journal_page.journal_date }} {{ journal_page.title }}">
+        <div class="card m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h2 class="card-title text-center"> {{ journal_page.user }}</h2>
+                <h3 class="card-title text-center"> {{ journal_page.journal_date }}</h3>
+                {% if journal_page.day_image %}
+                <img src="{{ journal_page.day_image.url }}" class="card-img-top" alt="Journal cover image">
+                {% else %}
+                <img src="{% static 'images/quill_logo.webp' %}" class="card-img-top" alt="Journal cover image">
+                {% endif %}
+                <p class="card-text text-center">{{ journal_page.title }}</p>
+            </div>
+
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -16,7 +16,7 @@ class Journal(models.Model):
     )
     title = models.CharField(max_length=30, null=False, blank=False)
     content = RichTextField(max_length=15000, null=False, blank=False)
-    journal_date = models.DateField(auto_now=True, null=False, blank=False)
+    journal_date = models.DateField(auto_now_add=True, null=False, blank=False)
     is_public = models.BooleanField(null=False, blank=False)
     self_image = ResizedImageField(
         size=[200, None],
@@ -40,7 +40,10 @@ class Journal(models.Model):
         """Check to see if there is already a page for this user today"""
         today = datetime.date.today()
         requestor = get_current_user()
-        journal_page = Journal.objects.filter(journal_date=today, user=requestor)
+        journal_page = Journal.objects.filter(
+            journal_date=today,
+            user=requestor
+            )
         if journal_page:
             return journal_page[0].id
         else:
