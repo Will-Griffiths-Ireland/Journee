@@ -15,6 +15,7 @@ class Journal(models.Model):
         User, related_name="journal_owner", on_delete=models.CASCADE
     )
     title = models.CharField(max_length=30, null=False, blank=False)
+    views = models.BigIntegerField(null=False, blank=False, default=0)
     content = RichTextField(max_length=15000, null=False, blank=False)
     journal_date = models.DateField(auto_now_add=True, null=False, blank=False)
     is_public = models.BooleanField(null=False, blank=False)
@@ -48,6 +49,15 @@ class Journal(models.Model):
             return journal_page[0].id
         else:
             return False
+
+    def addPageView(self):
+        """
+            Increase the total page views
+        
+        """
+        self.views = self.views + 1
+        self.save()
+        return
 
 
 class Meta:

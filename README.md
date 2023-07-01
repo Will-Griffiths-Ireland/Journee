@@ -37,6 +37,18 @@ I took the role > action > benfit approach to writing my user stories
 
 All my intial wireframe concepts
 
+## Features
+
+### User Account Creation
+
+### View Count
+
+* Each journal entry has functionality to track how many views it has had.
+* This allows a user to know how many others viewed their public journal page.
+* The count is also used in picking content for the showcase page.
+* The logic delibrately counts every single view to allow for a simulated production expereince during testing and review.
+* With a launched site this functionality would be modified to use something like Django-Hitcount so that only unique views per IP would be counted
+
 ## Testing
 
 ## Technoligies & Tools

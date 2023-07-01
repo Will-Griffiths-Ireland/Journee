@@ -5,10 +5,12 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container fade-in">
     <div class="journal_page_view mt-3 p1">
         <h1>{{ journal_page.journal_date }}</h1>
         <h2>{{ journal_page.title }}</h2>
+        <h3>Views - {{ journal_page.views }}</h3>
+        {{ journal_page.addPageView }}
         <div class="journal_day_image">
             {% if journal_page.day_image %}
             <img src="{{ journal_page.day_image.url }}" alt="Photo for this day">

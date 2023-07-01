@@ -88,11 +88,22 @@ footer a {
 
 /* ###### JOURNAL PAGE PREVIEW CARDS ###### */
 
+
+
+
 .card {
     height: 95%;
     margin: 1rem;
     box-shadow: var(--box_shadow);
+    transition: scale .5s;
 }
+
+.card:hover {
+    scale: 1.5;
+    z-index: 10;
+}
+
+
 
 .journal_pages {
     text-decoration: none;
@@ -111,6 +122,7 @@ footer a {
     flex-direction: column;
     justify-content: center;
     width: fit-content;
+    height: 85dvh;
     border-radius: 2rem;
     border: 1px solid var(--black);
     box-shadow: var(--box_shadow);
@@ -133,4 +145,23 @@ footer a {
     border-radius: 50%;
     justify-content: center;
     align-items: center;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
 }
