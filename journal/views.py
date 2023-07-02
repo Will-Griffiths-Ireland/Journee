@@ -7,9 +7,9 @@ from django.views.generic import (
     DeleteView,
     UpdateView,
 )
-from .models import Journal
+from .models import Journal, Profile
 import datetime
-from .forms import JournalForm
+from .forms import JournalForm, ProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.db.models import Q
@@ -93,6 +93,17 @@ class EditPage(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy("view_journal_page", kwargs={"pk": self.object.pk})
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
+class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """Update user profile"""
+
+    template_name = "journal/edit_profile.html"
+    model = Profile
+    form_class = ProfileForm
 
     def test_func(self):
         return self.request.user == self.get_object().user

@@ -13,6 +13,5 @@ class JournalAdmin(admin.ModelAdmin):
         'is_public',
         'self_image',
         'day_image',
-        'selected_theme'
     )
     list_filter = ('user', 'journal_date')

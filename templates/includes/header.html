@@ -14,7 +14,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if url_name == 'showcase' %}active{% endif %}" aria-current="page"
-                            href="{% url 'showcase' %}">Showcase</a>
+                            href="{% url 'journals' %}">Showcase</a>
                     </li>
                     {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">
@@ -34,7 +34,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% if request.user.is_authenticated %}
-                            <li><a class="dropdown-item" href="#">View Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' request.user.id %}">View Profile</a></li>
                             <li><a class="dropdown-item" href="/accounts/logout/">Logout ( {{ request.user }} )</a></li>
                             {% else %}
                             <li><a class="dropdown-item" href="/accounts/login/">Login</a></li>

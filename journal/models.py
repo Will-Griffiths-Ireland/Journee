@@ -35,7 +35,6 @@ class Journal(models.Model):
         null=True,
         blank=True,
     )
-    selected_theme = models.CharField(max_length=255, null=True, blank=True)
 
     def journalPageExistsForToday(self):
         """Check to see if there is already a page for this user today"""
@@ -53,16 +52,58 @@ class Journal(models.Model):
     def addPageView(self):
         """
             Increase the total page views
-        
         """
         self.views = self.views + 1
         self.save()
         return
 
+    class Meta:
+        ordering = ["-journal_date"]
 
-class Meta:
-    ordering = ["-journal_date"]
+    def __str__(self):
+        return str(self.title)
 
 
-def __str__(self):
-    return str(self.title)
+class Profile(models.Model):
+    """
+    A model to manage users profile and settings
+    """
+
+    user = models.ForeignKey(
+        User, related_name="account_user", on_delete=models.CASCADE
+    )
+    first_name = models.CharField(max_length=50, null=False, blank=True)
+    last_name = models.CharField(max_length=50, null=False, blank=True)
+    birthday = models.DateField(null=True, blank=True)
+    account_activated = models.BooleanField(
+        default=False,
+        null=False,
+        blank=False
+        )
+    make_new_page_public = models.BooleanField(
+        default=False,
+        null=False,
+        blank=False
+        )
+    description_word_one = models.CharField(
+        max_length=50,
+        null=False,
+        blank=True
+        )
+    description_word_two = models.CharField(
+        max_length=50,
+        null=False,
+        blank=True
+        )
+    description_word_three = models.CharField(
+        max_length=50,
+        null=False,
+        blank=True
+        )
+    colour_theme = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        ordering = ["-id"]
+
+    def __str__(self):
+        return str(self.id)

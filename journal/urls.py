@@ -5,12 +5,14 @@ from .views import (
     ViewJournalPage,
     RemovePage,
     EditPage,
-    JournalSearch
+    JournalSearch,
+    EditProfile
     )
 
 urlpatterns = [
     path("", AddJournalPage.as_view(), name="add_journal_page"),
     path("journals/", Journals.as_view(), name="journals"),
+    path("profile/<slug:pk>/", EditProfile.as_view(), name="profile"),
     path("search/journals/", JournalSearch.as_view(), name="journal_search"),
     path("<slug:pk>/", ViewJournalPage.as_view(), name="view_journal_page"),
     path("delete/<slug:pk>/", RemovePage.as_view(),

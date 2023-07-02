@@ -6,11 +6,26 @@
 {% block content %}
 
 <div class="container fade-in">
+
     <div class="journal_page_view mt-3 p1">
+        {% if journal_page.is_public %}
+        <span class="material-symbols-outlined visibility_icon">
+            visibility
+        </span>
+        {% else %}
+        <span class="material-symbols-outlined visibility_icon">
+            visibility_off
+        </span>
+        {% endif %}
         <h1>{{ journal_page.journal_date }}</h1>
         <h2>{{ journal_page.title }}</h2>
-        <h3>Views - {{ journal_page.views }}</h3>
-        {{ journal_page.addPageView }}
+
+
+
+        <div class="views_section">
+            <h3>Views - {{ journal_page.views }}</h3>
+        </div>
+        <span class="hidden">{{ journal_page.addPageView }}</span>
         <div class="journal_day_image">
             {% if journal_page.day_image %}
             <img src="{{ journal_page.day_image.url }}" alt="Photo for this day">

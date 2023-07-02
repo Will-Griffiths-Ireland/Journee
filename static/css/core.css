@@ -27,6 +27,23 @@
     font-family: var(--cherry_bomb);
 }
 
+.hidden {
+    visibility: hidden;
+    display: none;    
+}
+
+
+/* ###### GOOGLE ICONS ###### */
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 200,
+        'opsz' 48;
+}
+
+
 /* ###### NAVBAR STYLING ###### */
 
 .journee_logo {
@@ -116,12 +133,32 @@ footer a {
 
 /* ###### JOURNAL PAGE VIEW ###### */
 
+.visibility_icon {
+    position: fixed;
+    width: fit-content;
+    height: fit-content;
+    font-size: 3rem;
+    top: 1rem;
+    right: 2rem;
+}
+
+.views_section{
+    display: flex;
+    align-items: center;
+}
+
+.views_section h3{
+    margin: 0;
+    display: table-cell;
+    vertical-align: top;
+    height: 3rem;
+}
+
 .journal_page_view {
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: fit-content;
     height: 85dvh;
     border-radius: 2rem;
     border: 1px solid var(--black);

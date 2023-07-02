@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     # Journee Apps
-    "showcase",
     "journal",
     # Cloudinary
     "cloudinary",
