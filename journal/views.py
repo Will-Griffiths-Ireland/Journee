@@ -25,6 +25,16 @@ class Journals(ListView):
     context_object_name = "journals"
 
 
+class Showcase(ListView):
+    """
+    View public journals
+    """
+
+    template_name = "journal/showcase.html"
+    model = Journal
+    context_object_name = "showcase_journals"
+
+
 class ViewJournalPage(DetailView):
     """
     View a journal entry
@@ -107,3 +117,19 @@ class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
+    
+
+class AddProfile(LoginRequiredMixin, CreateView):
+    """
+    Add a base profile
+    """
+
+    template_name = "journal/edit_profile.html"
+    context_object_name = "add_profile"
+    model = Profile
+    form_class = ProfileForm
+    success_url = "/journal/journals/"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(AddProfile, self).form_valid(form)

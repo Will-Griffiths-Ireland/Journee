@@ -69,7 +69,7 @@ class Profile(models.Model):
     A model to manage users profile and settings
     """
 
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User, related_name="account_user", on_delete=models.CASCADE
     )
     first_name = models.CharField(max_length=50, null=False, blank=True)
