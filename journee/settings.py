@@ -31,6 +31,7 @@ DEBUG = "DEV" in os.environ
 ALLOWED_HOSTS = [
     "localhost",
     "will-griffiths-ireland-expert-space-qjwv4qxrjwwf4574-8000.preview.app.github.dev",
+    "journee-23f2563951cb.herokuapp.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
