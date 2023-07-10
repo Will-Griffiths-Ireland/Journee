@@ -124,6 +124,7 @@ class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = "journal/edit_profile.html"
     model = Profile
     form_class = ProfileForm
+    success_url = "/journals/"
 
     def test_func(self):
         return self.request.user == self.get_object().user

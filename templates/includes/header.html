@@ -35,11 +35,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% if request.user.is_authenticated %}
-                            <li><a class="dropdown-item" href="#">Profile -- {{ request.user.account_user.user_id }}</a></li>
-                            {% if journals.0.userHasFullProfile %}
-                            <li><a class="dropdown-item" href="{% url 'view_profile' request.user.account_user.user_id %}">View Profile</a></li>
+                            {% if request.user.account_user.user_id %}
+                            <li><a class="dropdown-item" href="{% url 'view_profile' request.user.account_user.id %}">View Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'edit_profile' request.user.account_user.id %}">Edit Profile</a></li>
                             {% else %}
-                            <li><a class="dropdown-item" href="{% url 'add_profile' request.user.account_user.user_id %}">Add Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'add_profile' request.user.id %}">Add Profile</a></li>
                             {% endif %}
                             <li><a class="dropdown-item" href="/accounts/logout/">Logout ( {{ request.user|title }} )</a></li>
                             {% else %}
