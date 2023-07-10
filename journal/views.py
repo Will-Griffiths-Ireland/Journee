@@ -77,7 +77,7 @@ class AddJournalPage(LoginRequiredMixin, CreateView, ListView, DetailView):
     context_object_name = "journals"
     model = Journal
     form_class = JournalForm
-    success_url = "/journal/journals/"
+    success_url = "/journals/"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -88,7 +88,7 @@ class RemovePage(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Remove Journal Page"""
 
     model = Journal
-    success_url = "/journal/journals/"
+    success_url = "/journals/"
 
     def test_func(self):
         return self.request.user == self.get_object().user
@@ -128,7 +128,7 @@ class AddProfile(LoginRequiredMixin, CreateView):
     context_object_name = "add_profile"
     model = Profile
     form_class = ProfileForm
-    success_url = "/journal/journals/"
+    success_url = "/journals/"
 
     def form_valid(self, form):
         form.instance.user = self.request.user

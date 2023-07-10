@@ -55,4 +55,8 @@ All my intial wireframe concepts
 
 * Bootstrap 5.3
 
-## Depployment
+## Deployment
+
+## Future Enhancements
+
+* Full encrption of all user journal and profile information
