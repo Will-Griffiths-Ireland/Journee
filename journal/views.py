@@ -32,7 +32,7 @@ class Showcase(ListView):
 
     template_name = "journal/showcase.html"
     model = Journal
-    context_object_name = "showcase_journals"
+    context_object_name = "journals"
 
 
 class ViewJournalPage(DetailView):
@@ -43,6 +43,16 @@ class ViewJournalPage(DetailView):
     template_name = "journal/view_page.html"
     model = Journal
     context_object_name = "journal_page"
+
+
+class ViewProfilePage(DetailView):
+    """
+    View a users profile
+    """
+
+    template_name = "journal/view_profile.html"
+    model = Profile
+    context_object_name = "profile_page"
 
 
 class JournalSearch(ListView):

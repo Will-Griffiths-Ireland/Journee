@@ -11,7 +11,7 @@
 </h1>
 <div class="container d-flex flex-row flex-wrap justify-content-center fade-in">
 
-    {% for journal_page in showcase_journals %}
+    {% for journal_page in journals %}
     {% if journal_page.is_public %}
     <a href="{% url 'view_journal_page' journal_page.id %}" class="journal_pages"
         aria-label="Click to view {{ journal_page.journal_date }} {{ journal_page.title }}">

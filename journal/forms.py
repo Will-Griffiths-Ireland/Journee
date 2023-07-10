@@ -32,8 +32,7 @@ class ProfileForm(forms.ModelForm):
     """
     class Meta:
         model = Profile
-        fields = ['user',
-                  'first_name',
+        fields = ['first_name',
                   'last_name',
                   'birthday',
                   'account_activated',

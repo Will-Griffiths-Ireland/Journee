@@ -23,6 +23,7 @@
                             Journal
                         </a>
                         <ul class="dropdown-menu">
+                            
                             <li><a class="dropdown-item" href="{% url 'add_journal_page' %}">Add Page</a></li>
                             <li><a class="dropdown-item" href="{% url 'journals' %}">View</a></li>
                         </ul>
@@ -34,8 +35,12 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% if request.user.is_authenticated %}
-                            <li><a class="dropdown-item" href="{% url 'add_profile' %}">View Profile</a></li>
-                            <li><a class="dropdown-item" href="/accounts/logout/">Logout ( {{ request.user }} )</a></li>
+                            {% if journals.0.userHasFullProfile %}
+                            <li><a class="dropdown-item" href="{% url 'view_profile' request.user.id %}">View Profile</a></li>
+                            {% else %}
+                            <li><a class="dropdown-item" href="{% url 'add_profile' request.user.id %}">Add Profile</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="/accounts/logout/">Logout ( {{ request.user|title }} )</a></li>
                             {% else %}
                             <li><a class="dropdown-item" href="/accounts/login/">Login</a></li>
                             <li><a class="dropdown-item" href="/accounts/signup/">Create Account</a></li>
