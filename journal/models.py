@@ -120,16 +120,3 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.id)
 
-
-    def IsProfileComplete(self):
-        """
-            Has the user got an extended profile?
-        """
-        requestor = get_current_user()
-        profile = Profile.objects.filter(
-            user_id=requestor.id
-            )
-        if profile:
-            return True
-        else:
-            return False
