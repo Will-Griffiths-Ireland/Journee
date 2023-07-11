@@ -7,7 +7,7 @@
 
 <div class="center_screen fade-in container">
 
-    <div class="journal_page_view m-3 p1">
+    <div class="journal_page_view m-3 p-3">
         <div class="journal-page-info">
             <div>
                 {% if journal_page.self_image %}
@@ -20,24 +20,18 @@
             <div>
                 <h1>{{ journal_page.journal_date }}</h1>
                 <h2>{{ journal_page.title }}</h2>
-            </div>
-            <div>
+            
                 <div class="views_section">
-                    <h3>Views - {{ journal_page.views }}</h3>
-                </div>
+                    <p>Views - {{ journal_page.views }}
+                
                 {% if journal_page.is_public %}
-                <span class="material-symbols-outlined visibility_icon">
-                    visibility
-                </span>
-                <p>(Public)</p>
+                (Public)</p>
                 {% else %}
-                <span class="material-symbols-outlined visibility_icon">
-                    visibility_off
-                </span>
-                <p>(Private)</p>
+                (Private)</p>
                 {% endif %}
             </div>
         </div>
+    </div>
         <span class="hidden">{{ journal_page.addPageView }}</span>
         <div class="d-flex justify-content-center">
             {% if journal_page.day_image %}

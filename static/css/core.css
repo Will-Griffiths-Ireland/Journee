@@ -165,24 +165,13 @@ footer a {
 
 /* ###### JOURNAL PAGE VIEW ###### */
 
-.visibility_icon {
-    width: fit-content;
-    height: fit-content;
-    font-size: 3rem;
-    display: inline;
-}
+
 
 .views_section{
     display: flex;
     align-items: center;
 }
 
-.views_section h3{
-    margin: 0;
-    display: table-cell;
-    vertical-align: top;
-    height: 3rem;
-}
 
 .journal_page_view {
 
@@ -202,7 +191,7 @@ footer a {
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     }
 
 .journal_day_image {
@@ -216,8 +205,11 @@ footer a {
 .journal_self_image {
     border-radius: 50%;
     object-fit: cover;
-    width: 7rem;
-    height: 7rem;
+    /* width: 7rem;
+    height: 7rem; */
+    width: 10vh;
+    height: 10vh;
+    margin-right: 2rem;
 }
 
 .fade-in {
