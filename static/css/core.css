@@ -198,19 +198,29 @@ footer a {
     border-radius: 1rem;
     height: auto;
     max-width: 100%;
-    max-height: 50dvh;
+    max-height: 50vh;
     box-shadow: var(--box_shadow);
 }
 
 .journal_self_image {
     border-radius: 50%;
     object-fit: cover;
-    /* width: 7rem;
-    height: 7rem; */
-    width: 10vh;
-    height: 10vh;
-    margin-right: 2rem;
+    width: 30vw;
+    height: 30vw;
+    margin: .5rem;
+    border: 1px solid var(--black);
+    box-shadow: var(--box_shadow);
 }
+
+@media only screen and (min-width: 600px) {
+    .journal_self_image {
+            width: 10vw;
+            height: 10vw;
+            margin: 2rem;
+        }
+}
+
+
 
 .fade-in {
     opacity: 0;
