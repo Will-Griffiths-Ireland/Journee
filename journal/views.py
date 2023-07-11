@@ -34,6 +34,12 @@ class Showcase(ListView):
     model = Journal
     context_object_name = "journals"
 
+    def get_queryset(self, **kwargs):
+        journals = self.model.objects.filter(
+                Q(is_public=True)
+            )
+        return journals
+
 
 class ViewJournalPage(DetailView):
     """
