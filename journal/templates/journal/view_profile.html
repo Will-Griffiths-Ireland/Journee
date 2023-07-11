@@ -4,10 +4,29 @@
 
 {% block content %}
 
-<div class="container">
-        <div class=" mt-3 p1">
-            <h1> Profile First Name - {{ request.user.account_user.first_name }}</h1>
-            <h1> Authenticated User Name - {{ request.user }}</h1>
+<div class="center_screen">
+    <div class="text-left border_shadow m-4 p-4 fade-in">
+        <h1 class="text-center p-2">Viewing {{ request.user }}'s Profile </h1>
+        
+                <p>[ Login Username ] - <b>{{ request.user }}</b></p>
+                <p>[ Email ] - <b>{{ request.user.email }}</b></p>
+                <p>[ Sign Up Date ] - <b>{{ request.user.date_joined }}</b></p>
+                <p>[ First Name ] - <b>{{ request.user.account_user.first_name }}</b></p>
+                <p>[ Last Name ] - <b>{{ request.user.account_user.last_name }}</b></p>
+                <p>[ Birthday ] - <b>{{ request.user.account_user.birthday }}</b></p>
+                <p>[ Description Words ]</p>
+                    <div >  
+                    <p class="ps-3">[1] - <b>{{ request.user.account_user.description_word_one }}</b></p>
+                    <p class="ps-3">[2] - <b>{{ request.user.account_user.description_word_two }}</b></p>
+                    <p class="ps-3">[3] - <b>{{ request.user.account_user.description_word_three }}</b></p>
+                </div>
+                <p>[ Default New Pages To Public? ] - <b>{{ request.user.account_user.make_new_page_public }}</b></p>
+                <div class="text-center">
+                <a href="{% url 'edit_profile' request.user.account_user.id %}" class="btn btn-primary m-2">Edit</a>
+                <a href="javascript:history.go(-1)" class="btn btn-primary  m-2">Cancel</a>
             </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

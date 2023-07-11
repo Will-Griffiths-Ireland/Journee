@@ -37,7 +37,6 @@
                             {% if request.user.is_authenticated %}
                             {% if request.user.account_user.user_id %}
                             <li><a class="dropdown-item" href="{% url 'view_profile' request.user.account_user.id %}">View Profile</a></li>
-                            <li><a class="dropdown-item" href="{% url 'edit_profile' request.user.account_user.id %}">Edit Profile</a></li>
                             {% else %}
                             <li><a class="dropdown-item" href="{% url 'add_profile' request.user.id %}">Add Profile</a></li>
                             {% endif %}

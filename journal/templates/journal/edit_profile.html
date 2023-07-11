@@ -4,16 +4,19 @@
 
 {% block content %}
 
-<div class="container">
-    <form method="POST" enctype="multipart/form-data" class="p-5 form mt-2">
-        <h1 class="text-center">Edit User Profile </h1>
+<div class="center_screen">
+    <div class="text-left m-4 p-4 fade-in">
+    <form method="POST" enctype="multipart/form-data" class="p-5 form m-2">
+        <h1 class="text-center">Editing {{ request.user|title }}'s Profile </h1>
         {% csrf_token %}
         {{ form.media }}
         {{ form|crispy }}
         <div class="text-center">
-            <button type="submit" class="btn btn-primary mt-2">Save Changes</button>
+            <button type="submit" class="btn btn-primary m-2">Save</button>
+            <a href="javascript:history.go(-1)" class="btn btn-primary m-2">Cancel</a>
         </div>
 
     </form>
+</div>
 </div>
 {% endblock %}

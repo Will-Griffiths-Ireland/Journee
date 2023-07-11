@@ -37,7 +37,7 @@ class JournalForm(forms.ModelForm):
         labels = {
             'title': 'Title',
             'content': 'Journal Entry',
-            'is_public': 'Share With Others?',
+            'is_public': 'Make Page Public?',
             'self_image': 'Selfie',
             'day_image': 'Photo Of The Day'
         }
@@ -52,18 +52,19 @@ class ProfileForm(forms.ModelForm):
         fields = ['first_name',
                   'last_name',
                   'birthday',
-                  'account_activated',
                   'make_new_page_public',
                   'description_word_one',
                   'description_word_two',
                   'description_word_three',
                   'colour_theme'
                   ]
-        # labels = {
-        #     'title': 'Title',
-        #     'content': 'Journal Entry',
-        #     'is_public': 'Share With Others?',
-        #     'self_image': 'Selfie',
-        #     'day_image': 'Photo Of The Day',
-        #     'selected_theme': 'Theme'
-        # }
+        labels = {
+                'first_name': 'First Name',
+                'last_name': 'Last Name',
+                'birthday': 'Birthday',
+                'make_new_page_public': 'Default New Pages To Public?',
+                'description_word_one': 'Description Word 1',
+                'description_word_two': 'Description Word 2',
+                'description_word_three': 'Description Word 3',
+                'colour_theme': 'Journal Theme'
+        }
