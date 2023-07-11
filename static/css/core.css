@@ -193,11 +193,10 @@ footer a {
 }
 
 .journal_day_image {
-    overflow: hidden;
     display: flex;
     border-radius: 1rem;
     height: 30dvh;
-    width: fit-content;
+    max-width: max-content;
     justify-content: center;
     align-items: center;
 }

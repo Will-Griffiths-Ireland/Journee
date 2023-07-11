@@ -2,7 +2,6 @@
 
 {% block page_title %} Remove Journal Page ({{ journal.journal_date }}) -
 {% if not journal.title %}
-Untitled
 {% else %}
 {{ journal.title }}
 {% endif %}
@@ -10,23 +9,25 @@ Untitled
 
 {% block content %}
 
-<div class="container ">
+<div class="center_screen">
+  <div class="text-center border_shadow m-4 p-4 fade-in">
     <h1 class="text-center mt-2">Confirm Journal Page Removal</h1>
     <div class="d-flex justify-content-center pt-3">
         <form method="POST" class="text-center">
             {% csrf_token %}
             <p>
-                Are you sure you want to remove and permantently delete this jounral page
-                ({{ journal.journal_date }}) -
+                Are you sure you want to remove this page from your journal for the date ({{ journal.journal_date }}) -
                 {% if not journal.title %}
                 Untitled
                 {% else %}
-                {{ journal.title }}
+                Titled - {{ journal.title }}
                 {% endif %}
             </p>
-            <input type="submit" value="Confirm" class="btn btn-primary w-25">
+            <input type="submit" value="Confirm" class="btn btn-primary">
+            <a href="javascript:history.go(-1)"  class="btn btn-primary">Cancel</a>
         </form>
     </div>
+</div>
 </div>
 
 {% endblock %}

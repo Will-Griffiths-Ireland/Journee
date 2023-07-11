@@ -7,8 +7,8 @@
 {% with existing_page=journals.0.journalPageExistsForToday %}
 {% if existing_page %}
 <div class="center_screen">
-<div class="container border_shadow m-4 p-4 fade-in">
-    <h1 class="text-center">You already have a page for today {{ existing_page }}</h1>
+<div class="border_shadow m-4 p-4 fade-in">
+    <h1 class="text-center">You already have a page for today</h1>
     <div class="text-center">
         <a href="/journal/{{ existing_page }}/" class="btn btn-primary mt-2">Display Page</a>
     </div>

@@ -46,8 +46,8 @@
         </div>
         {% if request.user == journal_page.user %}
         <div class="text-center">
-            <a href="{% url 'edit_journal_page' journal_page.id %}" class="btn btn-primary w-25">Edit</a>
-            <a href="{% url 'remove_journal_page' journal_page.id %}" class="btn btn-primary w-25">Remove Page</a>
+            <a href="{% url 'edit_journal_page' journal_page.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'remove_journal_page' journal_page.id %}" class="btn btn-primary">Delete</a>
         </div>
         {% endif %}
 
