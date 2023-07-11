@@ -5,42 +5,48 @@
 
 {% block content %}
 
-<div class="container fade-in">
+<div class="center_screen fade-in container">
 
-    <div class="journal_page_view mt-3 p1">
-        {% if journal_page.is_public %}
-        <span class="material-symbols-outlined visibility_icon">
-            visibility
-        </span>
-        {% else %}
-        <span class="material-symbols-outlined visibility_icon">
-            visibility_off
-        </span>
-        {% endif %}
-        <h1>{{ journal_page.journal_date }}</h1>
-        <h2>{{ journal_page.title }}</h2>
-
-
-
-        <div class="views_section">
-            <h3>Views - {{ journal_page.views }}</h3>
+    <div class="journal_page_view m-3 p1">
+        <div class="journal-page-info">
+            <div>
+                {% if journal_page.self_image %}
+                <img class="journal_self_image" src="{{ journal_page.self_image.url }}" alt="Self image for this day">
+                {% else %}
+                <img class="journal_self_image" src="{% static 'images/quill_logo.webp' %}"
+                    alt="Self image for this day">
+                {% endif %}
+            </div>
+            <div>
+                <h1>{{ journal_page.journal_date }}</h1>
+                <h2>{{ journal_page.title }}</h2>
+            </div>
+            <div>
+                <div class="views_section">
+                    <h3>Views - {{ journal_page.views }}</h3>
+                </div>
+                {% if journal_page.is_public %}
+                <span class="material-symbols-outlined visibility_icon">
+                    visibility
+                </span>
+                <p>(Public)</p>
+                {% else %}
+                <span class="material-symbols-outlined visibility_icon">
+                    visibility_off
+                </span>
+                <p>(Private)</p>
+                {% endif %}
+            </div>
         </div>
         <span class="hidden">{{ journal_page.addPageView }}</span>
-        <div class="journal_day_image">
+        <div class="d-flex justify-content-center">
             {% if journal_page.day_image %}
-            <img src="{{ journal_page.day_image.url }}" alt="Photo for this day">
+            <img class="journal_day_image" src="{{ journal_page.day_image.url }}" alt="Photo for this day">
             {% else %}
-            <img src="{% static 'images/quill_logo.webp' %}" alt="Photo for this day">
+            <img class="journal_day_image" src="{% static 'images/quill_logo.webp' %}" alt="Photo for this day">
             {% endif %}
         </div>
 
-        <div class="journal_self_image">
-            {% if journal_page.self_image %}
-            <img class="journal_self_image" src="{{ journal_page.self_image.url }}" alt="Self image for this day">
-            {% else %}
-            <img class="journal_self_image" src="{% static 'images/quill_logo.webp' %}" alt="Self image for this day">
-            {% endif %}
-        </div>
         <div class="journal_page_content">
             <p>{{ journal_page.content|safe }}</p>
         </div>

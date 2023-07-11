@@ -20,9 +20,9 @@
             <div class="card-body">
                 <h2 class="card-title text-center"> {{ journal_page.journal_date }}</h2>
                 {% if journal_page.day_image %}
-                <img src="{{ journal_page.day_image.url }}" class="card-img-top" alt="Journal cover image">
+                <img src="{{ journal_page.day_image.url }}" class="card-img-top card-day-image" alt="Journal cover image">
                 {% else %}
-                <img src="{% static 'images/quill_logo.webp' %}" class="card-img-top" alt="Journal cover image">
+                <img src="{% static 'images/quill_logo.webp' %}" class="card-img-top card-day-image" alt="Journal cover image">
                 {% endif %}
                 <p class="card-text text-center">{{ journal_page.title }}</p>
             </div>
