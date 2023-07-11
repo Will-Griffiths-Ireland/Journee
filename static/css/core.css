@@ -32,6 +32,32 @@
     display: none;    
 }
 
+.center_screen {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: stretch;
+        height: 100%;
+    }
+
+.border_shadow{
+        border: 1px solid var(--black);
+        box-shadow: var(--box_shadow);
+        border-radius: 2rem;
+}
+
+.light-mode-1{
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.dark-mode-1 {
+    background-color: var(--black);
+    color: var(--white);
+}
+
 
 /* ###### GOOGLE ICONS ###### */
 
@@ -74,7 +100,7 @@ body {
 
 main {
     flex: 1 0 auto;
-    background-color: var(--white);
+    
 }
 
 .form {
