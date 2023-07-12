@@ -35,7 +35,9 @@ I took the role > action > benfit approach to writing my user stories
 
 ## User interface Design
 
-All my intial wireframe concepts can be found here
+All my intial wireframe concepts can be found here in a PDF.
+
+The basic layout of the site aims to be simple and intuitive
 
 
 ## Features
@@ -65,3 +67,5 @@ All my intial wireframe concepts can be found here
 ## Future Enhancements
 
 * Full encrption of all user journal and profile information
+* Ability to search users based on their description words
+* Ability to follow other users and have a dedicated page view of their pages

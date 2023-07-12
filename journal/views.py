@@ -13,6 +13,7 @@ from .models import Journal, Profile
 import datetime
 from .forms import JournalForm, ProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.db.models import Q
 
@@ -87,7 +88,7 @@ class JournalSearch(ListView):
         return journals
 
 
-class AddJournalPage(LoginRequiredMixin, CreateView, ListView, DetailView):
+class AddJournalPage(SuccessMessageMixin, LoginRequiredMixin, CreateView, ListView, DetailView):
     """
     Add a page to the journal
     """
@@ -97,11 +98,11 @@ class AddJournalPage(LoginRequiredMixin, CreateView, ListView, DetailView):
     model = Journal
     form_class = JournalForm
     success_url = "/journals/"
-    
+    success_message = 'Journal Page Added'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        messages.success(self.request, 'Journal Page Added')
+        
         return super(AddJournalPage, self).form_valid(form)
 
 
@@ -114,18 +115,23 @@ class RemovePage(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         return self.request.user == self.get_object().user
     
+    # For an unkown reason the SuccessMessageMixn is not working on Deleteview 
+    # even though it should be fixed per an issue
+    # https://code.djangoproject.com/ticket/21936
+
     def post(self, request, *args, **kwargs):
         self.get_object().delete()
         messages.success(request, 'Journal Page Deleted')
         return redirect('/journals/')
 
 
-class EditPage(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditPage(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update journal page"""
 
     template_name = "journal/edit_page.html"
     model = Journal
     form_class = JournalForm
+    success_message = 'Journal Page Updated'
 
     def get_success_url(self):
         return reverse_lazy("view_journal_page", kwargs={"pk": self.object.pk})
@@ -134,19 +140,20 @@ class EditPage(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == self.get_object().user
 
 
-class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditProfile(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update user profile"""
 
     template_name = "journal/edit_profile.html"
     model = Profile
     form_class = ProfileForm
     success_url = "/journals/"
+    success_message = "Profile Updated"
 
     def test_func(self):
         return self.request.user == self.get_object().user
     
 
-class AddProfile(LoginRequiredMixin, CreateView):
+class AddProfile(SuccessMessageMixin, LoginRequiredMixin, CreateView, ):
     """
     Add a base profile
     """
@@ -156,6 +163,7 @@ class AddProfile(LoginRequiredMixin, CreateView):
     model = Profile
     form_class = ProfileForm
     success_url = "/journals/"
+    success_message = "Extended Profile Created"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
