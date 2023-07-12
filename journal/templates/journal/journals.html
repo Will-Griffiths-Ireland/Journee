@@ -10,12 +10,11 @@
 
 <div class="center_screen">
 <h1 class="text-center p-2">
-    {{ request.user|title }}'s Journal Pages
+    {{ request.user|title }}'s Journal Pages (Total - {{ page_obj.number }})
 </h1>
 <div class="container d-flex flex-row flex-wrap justify-content-center fade-in">
 
     {% for journal_page in journals %}
-    {% if request.user == journal_page.user %}
     <a href="{% url 'view_journal_page' journal_page.id %}" class="journal_pages"
         aria-label="Click to view {{ journal_page.journal_date }} {{ journal_page.title }}">
         <div class="card m-2 " style="width: 18rem;">
@@ -31,8 +30,17 @@
 
         </div>
     </a>
-    {% endif %}
     {% endfor %}
+    
+    {% if page_obj.has_other_pages %}
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Previous Page</a>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Next Page</a>
+    {% endif %}
+    {% endif %}
+
 </div>
 </div>
 {% endblock %}

@@ -20,17 +20,24 @@ from django.db.models import Q
 
 class Journals(ListView):
     """
-    View all users journal pages
+    View all pages created by the user
     """
 
     template_name = "journal/journals.html"
     model = Journal
     context_object_name = "journals"
+    paginate_by = 2
+
+    def get_queryset(self, **kwargs):
+        journals = self.model.objects.filter(
+                Q(user=self.request.user)
+            ).order_by('-journal_date')
+        return journals
 
 
 class Showcase(ListView):
     """
-    View public journals
+    View public journals showcase
     """
 
     template_name = "journal/showcase.html"
@@ -51,7 +58,6 @@ class ViewJournalPage(DetailView):
 
     template_name = "journal/view_page.html"
     model = Journal
-    paginate_by = 3
     context_object_name = "journal_page"
 
 
