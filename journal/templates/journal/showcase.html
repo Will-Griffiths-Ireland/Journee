@@ -7,7 +7,7 @@
 
 {% block content %}
 <h1 class="text-center p-2">
-    Popular Public Journals
+    Showcase Journal Pages
 </h1>
 <div class="container d-flex flex-row flex-wrap justify-content-center fade-in">
 
@@ -24,6 +24,9 @@
                 <img src="{% static 'images/quill_logo.webp' %}" class="card-img-top card-day-image" alt="Journal cover image">
                 {% endif %}
                 <p class="card-text text-center">{{ journal_page.title }}</p>
+                <p class="card-text text-center">Views - {{ journal_page.views }}</p>
+                
+
             </div>
 
         </div>

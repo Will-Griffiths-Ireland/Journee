@@ -37,7 +37,7 @@ class Showcase(ListView):
     def get_queryset(self, **kwargs):
         journals = self.model.objects.filter(
                 Q(is_public=True)
-            )
+            ).order_by('-views')
         return journals
 
 
