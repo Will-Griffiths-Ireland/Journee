@@ -1,5 +1,7 @@
 from typing import Any
 from django.db.models.query import QuerySet
+from django.contrib import messages
+from django.shortcuts import redirect
 from django.views.generic import (
     CreateView,
     ListView,
@@ -48,6 +50,7 @@ class ViewJournalPage(DetailView):
 
     template_name = "journal/view_page.html"
     model = Journal
+    paginate_by = 3
     context_object_name = "journal_page"
 
 
@@ -94,9 +97,11 @@ class AddJournalPage(LoginRequiredMixin, CreateView, ListView, DetailView):
     model = Journal
     form_class = JournalForm
     success_url = "/journals/"
+    
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'Journal Page Added')
         return super(AddJournalPage, self).form_valid(form)
 
 
@@ -108,6 +113,11 @@ class RemovePage(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
+    
+    def post(self, request, *args, **kwargs):
+        self.get_object().delete()
+        messages.success(request, 'Journal Page Deleted')
+        return redirect('/journals/')
 
 
 class EditPage(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
