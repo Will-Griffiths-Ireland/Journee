@@ -37,12 +37,12 @@
     {% if page_obj.has_previous %}
     <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Previous Page</a>
     {% else %}
-    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary disabled">Previous Page</a>
+    <a href="#" class="btn btn-primary disabled">Previous Page</a>
     {% endif %}
     {% if page_obj.has_next %}
     <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Next Page</a>
     {% else %}
-    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary disabled">Next Page</a>
+    <a href="#" class="btn btn-primary disabled">Next Page</a>
     {% endif %}
     {% endif %}
 </div>
