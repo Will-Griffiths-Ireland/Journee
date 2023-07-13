@@ -10,7 +10,7 @@
 
 <div class="center_screen">
 <h1 class="text-center p-2">
-    {{ request.user|title }}'s Journal Pages (Total - {{ page_obj.number }})
+    {{ request.user|title }}'s Journal Pages (Total Pages - {{ page_obj.paginator.count }})
 </h1>
 <div class="container d-flex flex-row flex-wrap justify-content-center fade-in">
 
@@ -32,15 +32,20 @@
     </a>
     {% endfor %}
     
+    <div class="container text-center m-2">
     {% if page_obj.has_other_pages %}
     {% if page_obj.has_previous %}
     <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Previous Page</a>
+    {% else %}
+    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary disabled">Previous Page</a>
     {% endif %}
     {% if page_obj.has_next %}
     <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Next Page</a>
+    {% else %}
+    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary disabled">Next Page</a>
     {% endif %}
     {% endif %}
-
+</div>
 </div>
 </div>
 {% endblock %}

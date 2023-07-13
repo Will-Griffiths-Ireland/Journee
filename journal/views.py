@@ -26,8 +26,9 @@ class Journals(ListView):
     template_name = "journal/journals.html"
     model = Journal
     context_object_name = "journals"
-    paginate_by = 2
+    paginate_by = 4
 
+    # Return only the users journals, sorted by date
     def get_queryset(self, **kwargs):
         journals = self.model.objects.filter(
                 Q(user=self.request.user)
@@ -44,6 +45,7 @@ class Showcase(ListView):
     model = Journal
     context_object_name = "journals"
 
+    
     def get_queryset(self, **kwargs):
         journals = self.model.objects.filter(
                 Q(is_public=True)
