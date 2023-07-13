@@ -144,7 +144,6 @@ footer a {
 
 
 
-
 .card {
     height: 95%;
     margin: 1rem;
@@ -152,9 +151,12 @@ footer a {
     transition: scale .5s;
 }
 
-.card:hover {
-    scale: 1.3;
-    z-index: 10;
+@media (pointer: fine){
+    .card:hover {
+            scale: 1.3;
+            z-index: 10;
+        }
+
 }
 
 .card-day-image{
