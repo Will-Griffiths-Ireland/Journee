@@ -26,7 +26,6 @@
 {% include 'includes/header.html' %}
 
 <body >
-    <img id="spinner" src="{% static 'images/spinner.webp' %}" alt="Loading..." />
 
     <main>
             <!-- set a timeout on alerts presented to the user -->
@@ -37,17 +36,6 @@
                     $('.alert').alert('close');
                 }, 3000);
 
-                $(document).ready(function () {
-                        $('#spinner').show();
-                    });
-
-                $(document).submit(function () {
-                        $('#spinner').show();
-                    });
-
-                    $(window).load('load', function () {
-                        $('#spinner').hide();
-                    });
             </script>
             {% if messages %}
             {% for message in messages|slice:":1" %}
