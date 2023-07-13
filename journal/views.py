@@ -45,7 +45,6 @@ class Showcase(ListView):
     model = Journal
     context_object_name = "journals"
 
-    
     def get_queryset(self, **kwargs):
         journals = self.model.objects.filter(
                 Q(is_public=True)
@@ -96,7 +95,7 @@ class JournalSearch(ListView):
         return journals
 
 
-class AddJournalPage(SuccessMessageMixin, LoginRequiredMixin, CreateView, ListView, DetailView):
+class AddJournalPage(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     """
     Add a page to the journal
     """
@@ -110,7 +109,6 @@ class AddJournalPage(SuccessMessageMixin, LoginRequiredMixin, CreateView, ListVi
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        
         return super(AddJournalPage, self).form_valid(form)
 
 
@@ -122,8 +120,8 @@ class RemovePage(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
-    
-    # For an unkown reason the SuccessMessageMixn is not working on Deleteview 
+
+    # For an unkown reason the SuccessMessageMixn is not working on Deleteview
     # even though it should be fixed per an issue
     # https://code.djangoproject.com/ticket/21936
 
@@ -133,7 +131,11 @@ class RemovePage(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return redirect('/journals/')
 
 
-class EditPage(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditPage(
+        SuccessMessageMixin,
+        LoginRequiredMixin,
+        UserPassesTestMixin,
+        UpdateView):
     """Update journal page"""
 
     template_name = "journal/edit_page.html"
@@ -148,7 +150,11 @@ class EditPage(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, Upd
         return self.request.user == self.get_object().user
 
 
-class EditProfile(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditProfile(
+        SuccessMessageMixin,
+        LoginRequiredMixin,
+        UserPassesTestMixin,
+        UpdateView):
     """Update user profile"""
 
     template_name = "journal/edit_profile.html"
@@ -159,7 +165,7 @@ class EditProfile(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, 
 
     def test_func(self):
         return self.request.user == self.get_object().user
-    
+
 
 class AddProfile(SuccessMessageMixin, LoginRequiredMixin, CreateView, ):
     """

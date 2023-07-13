@@ -78,3 +78,10 @@
             });
     });
 })();
+
+// function to remove user action messages
+
+setTimeout(function () {
+    // Closing the alert
+    $('.alert').alert('close');
+}, 3000);

@@ -9,8 +9,6 @@ class JournalForm(forms.ModelForm):
     """
         Form to enter a page in the journal
     """
-    
-    content = forms.CharField(widget=RichTextWidget())
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -51,20 +49,16 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['first_name',
                   'last_name',
-                  'birthday',
                   'make_new_page_public',
                   'description_word_one',
                   'description_word_two',
-                  'description_word_three',
-                  'colour_theme'
+                  'description_word_three'
                   ]
         labels = {
                 'first_name': 'First Name',
                 'last_name': 'Last Name',
-                'birthday': 'Birthday',
                 'make_new_page_public': 'Default New Pages To Public?',
                 'description_word_one': 'Description Word 1',
                 'description_word_two': 'Description Word 2',
-                'description_word_three': 'Description Word 3',
-                'colour_theme': 'Journal Theme'
+                'description_word_three': 'Description Word 3'
         }

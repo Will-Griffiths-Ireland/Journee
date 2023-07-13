@@ -3,33 +3,32 @@
 {% block page_title %} Add Journal Page {% endblock %}
 
 {% block content %}
-
 {% with existing_page=journals.0.journalPageExistsForToday %}
 {% if existing_page %}
 <div class="center_screen">
-<div class="border_shadow m-4 p-4 fade-in">
-    <h1 class="text-center">You already have a page for today</h1>
-    <div class="text-center">
-        <a href="/journal/{{ existing_page }}/" class="btn btn-primary mt-2">Display Page</a>
+    <div class="border_shadow m-4 p-4 fade-in">
+        <h1 class="text-center">You already have a page for today</h1>
+        <div class="text-center">
+            <a href="/journal/{{ existing_page }}/" class="btn btn-primary mt-2">Display Page</a>
+        </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
 
 {% else %}
 <div class="center_screen">
-<div class="container m-4 p-4 fade-in">
-    <form method="POST" enctype="multipart/form-data" class="p-4 form mt-2">
-        <h1 class="text-center">Add Journal Page </h1>
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form|crispy }}
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary mt-2">Add Page To Journal</button>
-        </div>
+    <div class="container m-4 p-4 fade-in">
+        <form method="POST" enctype="multipart/form-data" class="p-4 form mt-2">
+            <h1 class="text-center">Add Journal Page </h1>
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form|crispy }}
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-2">Add Page To Journal</button>
+            </div>
 
-    </form>
-</div>
+        </form>
+    </div>
 </div>
 {% endif %}
 {% endwith %}

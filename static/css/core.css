@@ -47,14 +47,10 @@
         box-shadow: var(--box_shadow);
         border-radius: 2rem;
 }
-#spinner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    display: none;
-}
+
+ .invalid-feedback {
+     display: block;
+ }
 
 
 /* ###### GOOGLE ICONS ###### */
@@ -88,13 +84,22 @@
     width: fit-content;
     height: fit-content;
     display: inline;
+    font-size: .8rem;
     border-radius: 1rem;
     box-shadow: var(--box_shadow);
     text-align: center;
     position: absolute;
-    top: 3%;
+    margin: 1rem;
+    padding: 1rem;
+    top: 1.5rem;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media only screen and (min-width: 600px) {
+    .alert {
+        font-size: 1rem;
+    }
 }
 
 /* ###### BODY ###### */
@@ -119,6 +124,13 @@ main {
     margin: 5% auto;
     box-shadow: var(--box_shadow);
     border-radius: 2rem;
+    padding: 1.5rem;
+}
+
+@media only screen and (min-width: 600px) {
+    .form {
+        padding: 5rem;
+    }
 }
 
 /* ###### FOOTER STYLING ###### */
@@ -151,6 +163,8 @@ footer a {
     transition: scale .5s;
 }
 
+/* Only use hover styling on devices with a mouse */
+
 @media (pointer: fine){
     .card:hover {
             scale: 1.3;
@@ -166,7 +180,6 @@ footer a {
     border-radius: .5rem;
 }
 
-
 .journal_pages {
     text-decoration: none;
     color: var(--black);
@@ -178,13 +191,10 @@ footer a {
 
 /* ###### JOURNAL PAGE VIEW ###### */
 
-
-
 .views_section{
     display: flex;
     align-items: center;
 }
-
 
 .journal_page_view {
 
