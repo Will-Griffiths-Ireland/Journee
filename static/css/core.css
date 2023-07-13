@@ -47,15 +47,13 @@
         box-shadow: var(--box_shadow);
         border-radius: 2rem;
 }
-
-.light-mode-1{
-    background-color: var(--white) !important;
-    color: var(--black) !important;
-}
-
-.dark-mode-1 * {
-    background-color: var(--black);
-    color: var(--white);
+#spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: none;
 }
 
 

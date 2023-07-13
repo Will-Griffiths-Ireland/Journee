@@ -7,4 +7,7 @@
 
 * All rendered html was validated with ...
 * CSS was validated with ...
-*
+* All __custom__ Python code was validated in ..
+
+### Manual Tests
+
