@@ -49,11 +49,11 @@
 }
 
 .light-mode-1{
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--white) !important;
+    color: var(--black) !important;
 }
 
-.dark-mode-1 {
+.dark-mode-1 * {
     background-color: var(--black);
     color: var(--white);
 }
@@ -82,7 +82,7 @@
 }
 
 .navbar {
-    background-color: var(--light_background);
+    /* background-color: var(--light_background); */
     box-shadow: var(--box_shadow);
 }
 
@@ -249,5 +249,22 @@ footer a {
     100% {
         opacity: 1;
         scale: 1;
+    }
+}
+
+.fade-in-group {
+    opacity: 0;
+    animation: fade-in-group ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+@keyframes fade-in-group {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

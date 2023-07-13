@@ -12,7 +12,7 @@
 <h1 class="text-center p-2">
     {{ request.user|title }}'s Journal Pages (Total Pages - {{ page_obj.paginator.count }})
 </h1>
-<div class="container d-flex flex-row flex-wrap justify-content-center fade-in">
+<div class="container d-flex flex-row flex-wrap justify-content-center fade-in-group">
 
     {% for journal_page in journals %}
     <a href="{% url 'view_journal_page' journal_page.id %}" class="journal_pages"

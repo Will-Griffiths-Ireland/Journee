@@ -64,8 +64,18 @@ The basic layout of the site aims to be simple and intuitive
 
 ## Deployment
 
+* clone repo
+setup db
+setup cloud storage
+deploy to Heroku
+
 ## Future Enhancements
 
 * Full encrption of all user journal and profile information
 * Ability to search users based on their description words
 * Ability to follow other users and have a dedicated page view of their pages
+
+## Credits & Acknowlegements
+
+* Boot strap docs
+* Django docs
