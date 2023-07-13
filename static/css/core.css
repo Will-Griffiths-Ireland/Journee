@@ -137,6 +137,7 @@ footer a {
     font-size: 1rem;
     margin: .5rem;
     text-decoration: none;
+    color: inherit;
 }
 
 /* ###### JOURNAL PAGE PREVIEW CARDS ###### */

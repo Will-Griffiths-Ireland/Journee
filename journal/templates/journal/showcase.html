@@ -6,12 +6,13 @@
 
 
 {% block content %}
+<div class="center_screen">
 <h1 class="text-center p-2">
     Showcase Journal Pages
 </h1>
 <div class="container d-flex flex-row flex-wrap justify-content-center fade-in-group">
 
-    {% for journal_page in journals|slice:":48" %}
+    {% for journal_page in journals|slice:":8" %}
     {% if journal_page.is_public %}
     <a href="{% url 'view_journal_page' journal_page.id %}" class="journal_pages"
         aria-label="Click to view {{ journal_page.journal_date }} {{ journal_page.title }}">
@@ -34,5 +35,5 @@
     {% endif %}
     {% endfor %}
 </div>
-
+</div>
 {% endblock %}
