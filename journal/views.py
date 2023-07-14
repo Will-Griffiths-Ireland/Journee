@@ -107,6 +107,12 @@ class AddJournalPage(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     success_url = "/journals/"
     success_message = 'Journal Page Added'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        journal_page_exists = Journal.journalPageExistsForToday()
+        context['journal_page_exists'] = journal_page_exists
+        return context
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AddJournalPage, self).form_valid(form)

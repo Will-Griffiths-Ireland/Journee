@@ -36,7 +36,7 @@ class Journal(models.Model):
         blank=True,
     )
 
-    def journalPageExistsForToday(self):
+    def journalPageExistsForToday():
         """Check to see if there is already a page for this user today"""
         today = datetime.date.today()
         requestor = get_current_user()
