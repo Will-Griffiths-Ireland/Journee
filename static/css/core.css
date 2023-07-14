@@ -48,6 +48,8 @@
         border-radius: 2rem;
 }
 
+/* Fix display issue with richtextfield not displaying validation error */
+
  .invalid-feedback {
      display: block;
  }

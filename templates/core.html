@@ -28,12 +28,8 @@
 <body >
 
     <main>
-            <!-- set a timeout on alerts presented to the user -->
-            <script type="text/javascript">
-                
-
-            </script>
-            {% if messages %}
+        <!-- Display user action messages     -->
+        {% if messages %}
             {% for message in messages|slice:":1" %}
             <div class="alert alert-success fade show" role="alert">
                 {{ message }}

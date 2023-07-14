@@ -1,13 +1,10 @@
 {% extends 'core.html' %}
 {% load static %}
-
-
 {% block page_title %}Journal Search{% endblock %}
-
-
 {% block content %}
+<div class="center_screen">
 <h1 class="text-center p-2">
-    Search Results
+    Search Results (Total Journal Pages - {{ page_obj.paginator.count }})
 </h1>
 <div class="container d-flex flex-row flex-wrap justify-content-center">
 
@@ -19,9 +16,9 @@
                 <h2 class="card-title text-center"> {{ journal_page.user }}</h2>
                 <h3 class="card-title text-center"> {{ journal_page.journal_date }}</h3>
                 {% if journal_page.day_image %}
-                <img src="{{ journal_page.day_image.url }}" class="card-img-top" alt="Journal cover image">
+                <img src="{{ journal_page.day_image.url }}" class="card-img-top card-day-image" alt="Journal cover image">
                 {% else %}
-                <img src="{% static 'images/quill_logo.webp' %}" class="card-img-top" alt="Journal cover image">
+                <img src="{% static 'images/quill_logo.webp' %}" class="card-img-top card-day-image" alt="Journal cover image">
                 {% endif %}
                 <p class="card-text text-center">{{ journal_page.title }}</p>
             </div>
@@ -29,6 +26,21 @@
         </div>
     </a>
     {% endfor %}
+        
+        <div class="container text-center m-2">
+            {% if page_obj.has_other_pages %}
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}&search_query={{ request.GET.search_query }}" class="btn btn-primary">Previous Page</a>
+            {% else %}
+            <a href="#" class="btn btn-primary disabled">Previous Page</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&search_query={{ request.GET.search_query }}" class="btn btn-primary">Next Page</a>
+            {% else %}
+            <a href="#" class="btn btn-primary disabled">Next Page</a>
+            {% endif %}
+            {% endif %}
+        </div>
 </div>
-
+</div>
 {% endblock %}

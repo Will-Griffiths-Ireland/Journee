@@ -76,10 +76,10 @@ class JournalSearch(ListView):
     """
     View a journal entry
     """
-
     template_name = "journal/journal_search.html"
     model = Journal
     context_object_name = "journal_search"
+    paginate_by = 4
 
     def get_queryset(self, **kwargs):
         query = self.request.GET.get("search_query")
@@ -87,11 +87,11 @@ class JournalSearch(ListView):
             journals = self.model.objects.filter(
                 Q(is_public=True) &
                 Q(content__icontains=query)
-            )
+            ).order_by('-journal_date', '-id')
         else:
             journals = self.model.objects.filter(
                 Q(is_public=True)
-            )
+            ).order_by('-journal_date', '-id')
         return journals
 
 
