@@ -29,12 +29,16 @@ I did want to give users the ability to share their journal with others but not 
 
 ### User Interface
 
-When I was working on the concept for Journee I wanted to present the user with an experience that was similar to a traditional diary. I wanted to keep the interface very clean and focused the users attention on the main content.
+When I was working on the concept for Journee I wanted to present the user with an experience that was similar to a traditional diary. I wanted to keep the interface very clean and focus the users attention on the main content of the journal entry.
 To that end, each page has a title, content, and an optional selfie/photo.
 
 ### Colour Theme
 
 I played with multiple different colour ideas for the site and in version 1 of the site I have utilized a simple light and dark interface that embraces the standard bootstrap colour mode that is tried and tested. A future enhancement would be to create further customized colour modes and CSS that allow for theming of "Sci-fi" or "Retro" type looks.
+
+The primary acent colour I used for the logo/favicon is an amber orange yellow #FFC000. This is a nod to yellow writing paper and old books.
+
+![Logo](docs/logo_color.JPG)
 
 ### Agile Planning ###
 
@@ -61,16 +65,58 @@ I have omitted the fields in the all-auth table that are unused.
 
 ## User interface Design
 
-All my intial wireframe concepts can be found here in a PDF.
+All my intial wireframe concepts can be found here in a [PDF](docs/Journee_wireframes.pdf).
 
-The basic layout of the site aims to be simple and intuitive for anyone to pickup and use within seconds
-
+The basic layout of the site aims to be simple and intuitive for anyone to pickup and use within seconds.
 
 ## Features
 
+### Showcase Page
+
+The showcase page is designed as the landing spot for all users. It helps make the site come to life and encourages people to take a look at others’ journals, then hopefully sign up and start their own.
+
+* Top 8 most viewed public journal pages
+* Displayed to both unauthenticated and authenticated users
+* Future enhancements would include an element of user customisation such as selecting what type of content to show
+
+![Showcase Page](docs/showcase_white.webp)
+
+### Theme Mode
+
+I utilised bootstraps new colour mode to include both a light and dark mode.
+
+* All user can chose their preference and it is stored/retrieved in local storage
+* Auto will detect the users current system preference
+
+![Nav Theme](docs/nav_theme.webp)
+
+![Theme](docs/theme.webp)
+
 ### User Account Creation
 
+The user account creation utlizes django-allauth
 
+* The username must be unique to this system and the user will be a warning if its in use.
+* Email is an optional field but please note this is only for testing and review. For the production website I would enable email verification to avoid account spamming and enable password resets via email
+* The password field applies the standard security hardening for length and complexity.
+
+![Account Create](docs/create_account.JPG)
+
+### Message Notifications
+
+All user interactions with the database will result in an onscreen message that is diaplyed in the top center of the screen for 3 seconds before it fades away
+
+![Account Create](docs/Message notifications.webp)
+
+### User Login
+
+
+
+### Adding A Journal Page
+
+### Editing A journal Page
+
+### Deleting A Journal Page
 
 ### View Count
 
