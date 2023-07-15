@@ -6,9 +6,18 @@ Journee is a platform that gives you the freedom to journal the important parts 
 
 ## Planning
 
+I thought a lot about how I could bring to life my idea of an online journal where users could document their journey through life. It came from reading old diaries my father kept, they were a portal into the past, with a simplistic charm. I wanted to create something modern but connected to the spirit of the past where you had one day of condensed notes.
+The name comes from a combination of...
+
+* Journal
+* Journey
+* Journée (French for day)
+
 The initial plan for the site was to include more interaction features such as comments and reactions, along with notifications and approval mechanisms. After careful consideration I decided that these features would actually detract from the simplicity of the application, after seeing friends and family with various social media apps that bombarded them with notifications and reminders I decided this is not what I wanted.
 A journal is really about you and documenting your story. I didn’t want it to become a race to build followers/friends or to tailor your content to please or attract others.
 I did want to give users the ability to share their journal with others but not for this to be the default, when a user creates a new journal page it's private by default and they have to choose to publish it for others to see.
+
+I also wanted to give user the choice of including media but didn’t want it to become of massive collection. Like the journal entry I have limited it to one per day so the users will think carefully about what they upload
 
 ### Target Audience
 
@@ -20,12 +29,13 @@ I did want to give users the ability to share their journal with others but not 
 * Frictionless Sign Up & Sign In
 * View/search public journals without an account (Entices Sign Up)
 * Showcase journal entries on the landing page
-* Abilty to switch site style (light/dark/customer colour modes)
+* Abilty to switch site style (light/dark/custom colour modes)
 * Add/edit/delete journal pages
 * Limit of 1 page per day
 * Limit of 1 photo and Selfie per day
 * Default images for those that do not want to add photos
 * Ability to make journals private/public
+* Extended profile that alows a users private/public publishing preference to be stored 
 
 ### User Interface
 
@@ -84,6 +94,7 @@ The showcase page is designed as the landing spot for all users. It helps make t
 ### Theme Mode
 
 I utilised bootstraps new colour mode to include both a light and dark mode.
+The screenshots througout the readme have a mix of the modes
 
 * All user can chose their preference and it is stored/retrieved in local storage
 * Auto will detect the users current system preference
@@ -96,7 +107,7 @@ I utilised bootstraps new colour mode to include both a light and dark mode.
 
 The user account creation utlizes django-allauth
 
-* The username must be unique to this system and the user will be a warning if its in use.
+* The username must be unique to this system and the user will get a warning if its in use.
 * Email is an optional field but please note this is only for testing and review. For the production website I would enable email verification to avoid account spamming and enable password resets via email
 * The password field applies the standard security hardening for length and complexity.
 
@@ -104,19 +115,78 @@ The user account creation utlizes django-allauth
 
 ### Message Notifications
 
-All user interactions with the database will result in an onscreen message that is diaplyed in the top center of the screen for 3 seconds before it fades away
+All user interactions with the database will result in an onscreen message that is diaplyed in the top center of the screen for 3 seconds before it fades away.
 
-![Account Create](docs/Message notifications.webp)
+* Sign in / out
+* Adds
+* Edits
+* Deletes
+
+![Account Create](docs/Message_notifications.webp)
 
 ### User Login
 
+* The user login screen asks for the username and password
+* A message is shown to the user if their credentials do not match any stored records
 
+![Account Sign In](docs/login.JPG)
 
 ### Adding A Journal Page
 
+Once a user has an account and is signed in they can create a journal entry.
+
+* The title and journal entry are mandatory fields
+* The title is limited 30 characters and the journal entry is 15000
+* I used the django richtextfield widget for the journal entry to allow for a little formatting
+* The user has the option to make the entry public, without any extended profile preference the default is private. I did this on a per page level to give the user full control of what they want to make public or not
+* The self image is optional and will be replaced by the Journee logo if the user does not upload one. I have this for users that want to track their how they look/age
+* The day image is basically for the photo the user thinks will sum up their day. Again if they choose not to then the logo is used.
+* Users are blocked from uploading files other than image files
+* Images are resized to 200px for self images and 800px width for day images and encoded as webp for optimum file sizes
+* The user is limited to a single journal page per day and will get a warning if they already have one whihc has a link to it. Please note that while I was testing and creating content to fill the site I disabled the date check so thats why you will see some users with multiple pages for the same day.
+
+![Page Exists warning](docs/add_page.JPG)
+
+![Journal Page Add](docs/page_exists.JPG)
+
+### User Journal View
+
+The Journal view is the users collection of journal pages
+
+* They are brought to this view when they submit a new journal page
+* The journal view is paginated to 4 preview cards per page
+* The total number of pages is displayed in the heading
+* Previous and next buttons allow the user to flick through their journal
+* This page is private to the user so they will be able to see all of their pages irrespective of if they are set public or private
+
+![Journal View](docs/journal_view.JPG)
+
+## Journal Page View
+
+The journal page view is where the user views and reads that page
+
+* The self image is displayed at the top
+* The title, public/private status and view count are alongside
+* The day photo is next with the journal entry below it.
+* If the user is the creator of the page then they will have edit/delete buttons at the bottom of the page
+
+Below are Desktop and Mobile Screenshots
+
+![Journal Page View Desktop](docs/journal_page_view_desktop.JPG)
+
+![Journal Page View Mobile](docs/journal_page_view_mobile.JPG)
+
+Example of page with no images upload that is automatically using the placeholder logo images
+
+![Journal Page View Mobile No Images](docs/journal_page_view_mobile_noimages.JPG)
+
 ### Editing A journal Page
 
+When editing a page
+
 ### Deleting A Journal Page
+
+### Journal Search
 
 ### View Count
 
@@ -128,9 +198,15 @@ All user interactions with the database will result in an onscreen message that 
 
 ### Customer Error Messages
 
+Standed errors such as 500, 404 and 403 have custom templates
+
+### Security
+
+Across the site there are checks to see who the user is and who owns a page
+
 ## Testing
 
-All details on testing can be found here
+All details on testing can be found [here](TESTING.MD)
 
 ## Technoligies & Tools
 
@@ -140,10 +216,22 @@ All details on testing can be found here
 
 ## Deployment
 
-* clone repo
-setup db
-setup cloud storage
+* fork repo 
+* 
+* setup postgress or db of choice
+* setup cloud storage of choice
 deploy to Heroku
+
+* create a env.py file locally with these settings, or alter them depending on your choice of cloud storage and db
+
+>import os
+
+>os.environ['SECRET_KEY'] = '--UNIQUE SECRET KEY--'  
+>os.environ['DEV'] = 'True'  
+>os.environ['CLOUDINARY_URL'] = '--URL TO ACCESS CLOUDINARY--'  
+os.environ['DB_PASSWORD'] = '--PASSWORD FOR DB CONNECTION--'
+
+
 
 ## Future Enhancements
 
