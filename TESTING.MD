@@ -9,5 +9,13 @@
 * CSS was validated with ...
 * All __custom__ Python code was validated in ..
 
+### Lighthouse Scores
+
 ### Manual Tests
+
+|Test| Result | Note
+|--|--|--|
+| Does the main page display correctly across? | Pass | N\A |
+| Is the page responsive to different devices? | Pass | N\A |
+|  |  |  |
 
