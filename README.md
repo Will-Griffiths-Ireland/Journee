@@ -32,7 +32,7 @@ I also wanted to give user the choice of including media but didn’t want it to
 * Abilty to switch site style (light/dark/custom colour modes)
 * Add/edit/delete journal pages
 * Limit of 1 page per day
-* Limit of 1 photo and Selfie per day
+* Limit of 1 photo and selfie per day
 * Default images for those that do not want to add photos
 * Ability to make journals private/public
 * Extended profile that alows a users private/public publishing preference to be stored 
@@ -57,6 +57,10 @@ I played with multiple different colour ideas for the site and in version 1 of t
 The primary acent colour I used for the logo/favicon is an amber orange yellow #FFC000. This is a nod to yellow writing paper and old books.
 
 ![Logo](docs/logo_color.JPG)
+
+### Fonts
+
+The application is using the google font 'Geologica' with a fallback to sans-serif
 
 ### Agile Planning ###
 
@@ -261,6 +265,9 @@ All details on testing can be found [here](TESTING.MD)
 * Django 3.2.19
 * HMTL 5
 * CSS 3
+* SQLDraw
+* Paint.net
+* MS Powerpoint
 
 ## Packages
 
@@ -268,24 +275,32 @@ You can check all the packages and their versions in the [requirements.txt](requ
 
 ## Deployment
 
-Below is a general guide for deplying this application yourself.
+Below is a general guide for deploying this application yourself.
 
-There are many options for PaaS, database hosting services, and file hosting services. If you use different providers to me then you will need to configure [journee/settings.py](journee/settings.py) further to what I mention below and need to refer to the relevant [Django documetnation](https://docs.djangoproject.com/en/3.2/) for the correct settings.
+There are many options for PaaS, database hosting services, and file hosting services. If you use different providers to me then you will need to configure [journee/settings.py](journee/settings.py) further to what I mention below and need to refer to the relevant [Django documentation](https://docs.djangoproject.com/en/3.2/) for the correct settings.
 
-* Fork the github repo (recommended) or clone the repo locally 
-* Install all the required packages in your chosen enviroment - ( pip install -r requirements.txt )
-* Setup a new Db on https://www.elephantsql.com/
-* setup cloud storage of choice
-miration
-* Deploy to Heroku or your own choice of platform as a service (PaaS)
-* create a env.py in the root directory with these settings, or alter them depending on your choice of cloud storage and db
+Ideally connect your forked repo with a cloud based IDE like Codespaces/Gitpod/Codeanywhere and use a linux based container/workspace.
+This repo is built on template the code institue developed (.devcontainer) that works well with Codeanywhere and triggers a build of the base enviroment (Ubuntu 22.04.2 + python 3.8)
 
+
+* Fork the github repo (recommended) or clone the repo locally
+* Setup your cloud enviroment 
+* Install all the required packages ( just run the command __pip install -r requirements.txt__ )
+* Setup an account and a new database on https://www.elephantsql.com/
+* Update the DATABASE dictionary in settings.py to point to your HOST/NAME/USER
+* Setup an account on http://www.Cloudinary.com
+* Create an env.py in your projects root and add it the .gitignore file,then add the below code with these settings
+* Update the secret key with a random string of your choosing, and update the elephantsql DB_PASSWORD with yor own, finally put your own cloudinary connection url in
 >import os
-
 >os.environ['SECRET_KEY'] = '--UNIQUE SECRET KEY--'  
 >os.environ['DEV'] = 'True'  
 >os.environ['CLOUDINARY_URL'] = '--URL TO ACCESS CLOUDINARY--'  
 >os.environ['DB_PASSWORD'] = '--PASSWORD FOR DB CONNECTION--'
+
+* Run a django migration (python manage.py migrate) to create the tables on your database
+* Create an account on Heroku and create a new app
+* Update the apps settings with config vars that match those in the env file SECRET_KEY, CLOUDINARY_URL, DB_PASSWORD
+* Deploy App 
 
 
 
@@ -294,9 +309,19 @@ miration
 * Full encrption of all user journal and profile information
 * Ability to search users based on their description words
 * Ability to follow other users and have a dedicated page view of their pages, while keeping the experince passive and unintrusive
+* Profile can set preference for color and font
+
+## Media
+
+* A few headshots were used from www.pexels.com during testing
+* All others photos are my own work
+* Johnny 5 rights are with Spyglass Media Group (just a bit of fun for testing)
+* The Quill logo was created from a free icon in MS Powerpoint
+
 
 ## Credits & Acknowlegements
 
 * Code Institues Learning Material
 * [Daisy McGirr's](https://www.youtube.com/@IonaFrisbee) really relaxed and informative tutorials
 * [Tech With Tim's](https://www.youtube.com/@TechWithTim) huge catalog of really easy to digest tutorials
+* Bootstraps documentation and examples (JS was used per bootstrap instructions)
