@@ -6,7 +6,7 @@
 
 ### Validators
 
-* All __rendered__ custom html was validated with https://validator.w3.org/ and no issues were reported
+* All __rendered__ custom html was validated with https://validator.w3.org/ and any minor issues resolved.
 * CSS was validated with ...
 * All __custom__ Python code was linted along the way and validated in the CI tool
 
