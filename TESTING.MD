@@ -1,11 +1,12 @@
 ## Overview
 
 * For this project I decided to focus on a full suite of manual tests based around the core user experience.
-* I based the tests around the end to end user journey
+* I based the tests around the end to end user journey with a foundation in the project user stories
+* The test scope cover all areas of this project code across HTML, CSS, Python and JS
 
 ### Validators
 
-* All rendered html was validated with ...
+* All __rendered__ html was validated with ...
 * CSS was validated with ...
 * All __custom__ Python code was linted along the way and validated in the CI tool
 
@@ -24,14 +25,16 @@ The sites lighthouse results were good. The callout on mobile tests were due to 
 |--|--|--|
 | Does the main page display correctly? | Pass | N\A |
 | Is the page responsive to different devices? | Pass | N\A |
+| CSS animations display correctly across devices? | Pass | N\A |
 | Does the navbar only show links available to anon users? | Pass | N\A |
 | Does the showcase page display just the 8 top-viewed pages? | Pass | N\A |
+| Does the showcase page display just public journal pages? | Pass | N\A |
 | Are the showcase cards displayed in order of most views? | Pass | N\A |
 | Does clicking a showcase card take you to that page? | Pass | N\A |
 | Does clicking Account > Create Account, open create account page? | Pass | N\A |
 | Does the create account page validate that the username field is not blank? | Pass | N\A |
 | Does the create account page validate that the username entered is not in use? | Pass | N\A |
-| Does the password validator ensure strong password? | Pass | N\A |
+| Does the password validator ensure a strong password? | Pass | N\A |
 | Does the account get created when the user clicks create account | Pass | N\A |
 | Does the user get automatically signed in? | Pass | N\A |
 | Does the user get a message at the top of the screen to confirm sign in? | Pass | N\A |
@@ -57,3 +60,20 @@ The sites lighthouse results were good. The callout on mobile tests were due to 
 | Do all fields correctly render with formatting? | Pass | N\A |
 | Do edit/delete buttons display if user created page? | Pass | N\A |
 | If the user doesn't upload images do placeholders get displayed?| Pass | N\A |
+| Does the edit button open the edit page view? | Pass | N\A |
+| Is the user prevented from editing other users journal pages? | Pass | N\A |
+| Does clicking the delete button show the delete page confirmation? | Pass | N\A |
+| Does the confirmation have the correct title and date? | Pass | N\A |
+| Does clicking cancel take them back to the journal page they were viewing? | Pass | N\A |
+| Does clicking confirm delete the record and take them back to their journal view? | Pass | N\A |
+| Does entering a string in the search box show the search results page? | Pass | N\A |
+| Does clicking search with no string show all public journals? | Pass | N\A |
+| Are the search results paginated? | Pass | N\A |
+| Are the search results ordered by journal date? | Pass | N\A |
+| Do new users have an option under Account to Add Profile | Pass | N\A |
+| Does adding a profile function correctly | Pass | N\A |
+| If the profile has "Default New Pages To Public" checked, does this get applied to new pages? | Pass | N\A |
+
+### Bugs & Known Issues
+
+There are no bugs or known issues at this time

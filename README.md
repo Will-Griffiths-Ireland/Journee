@@ -42,6 +42,14 @@ I also wanted to give user the choice of including media but didn’t want it to
 When I was working on the concept for Journee I wanted to present the user with an experience that was similar to a traditional diary. I wanted to keep the interface very clean and focus the users attention on the main content of the journal entry.
 To that end, each page has a title, content, and an optional selfie/photo.
 
+### Animations
+
+I do use some animations across the site to make it a little more engaging for users.
+
+* Desktop hover animations on cards provide a scale animation. This is turned off for mobile.
+* Across desktop and mobile I use a quick fade on elements as they are presented to the user
+
+
 ### Colour Theme
 
 I played with multiple different colour ideas for the site and in version 1 of the site I have utilized a simple light and dark interface that embraces the standard bootstrap colour mode that is tried and tested. A future enhancement would be to create further customized colour modes and CSS that allow for theming of "Sci-fi" or "Retro" type looks.
@@ -182,11 +190,34 @@ Example of page with no images upload that is automatically using the placeholde
 
 ### Editing A journal Page
 
-When editing a page
+* If a user is the creator of a journal page then they will see a button to edit it
+* Editing the page is similar to the create view but any existing information is pre populated
+* All the same validation rules apply for editing
+
+![Journal Page Edit](docs/edit_page.JPG)
 
 ### Deleting A Journal Page
 
+* If a user is the creator of a journal page then they will see a button to delete it
+* Before the record is deleted the user gets a warning about removing the page
+* The warning contains both the date and title of the page for user verification
+* Clicking confirm removes the record and takes them back to the journal view
+* Clicking cancel will take them back to the journal page they were viewing
+
+![Journal Page Remove](docs/page_remove.JPG)
+
+
 ### Journal Search
+
+Users have a search box in the top left of the navbar so they can search for others users journals with content that relates to them
+
+* All public journals with a journal entry containing the searched string will be returned
+* Results are paginated
+* An empty search will return all public journals
+
+![Search](docs/search_bar.JPG)
+
+![Search](docs/search.JPG)
 
 ### View Count
 
@@ -196,40 +227,65 @@ When editing a page
 * The logic delibrately counts every single view to allow for a simulated production expereince during testing and review.
 * With a launched site this functionality would be modified to use something like Django-Hitcount so that only unique views per IP would be counted
 
-### Customer Error Messages
+![Views](docs/views.JPG)
 
-Standed errors such as 500, 404 and 403 have custom templates
+### Custom Error Messages
 
-### Security
+Standed errors such as 500, 404 and 403 have custom templates that are displayed to the user
 
-Across the site there are checks to see who the user is and who owns a page
+![404](docs/404.JPG)
+
+### Profile Page
+
+The users extended profile is optional. The site is fully functional for them without adding this. The purpose of the profile is to capture users preferences and customise their experince further.
+
+* Once a user has added a profile they can edit it in the future
+* None of the fields are mandatory
+* The primary funcational field for version 1 is the option to choose if new pages are set to be made public. If the user enables this then any new journal pages they create will have the checkbox to make them public checked.
+* Name fields are for future fucntionality where you user can choose how their name is displayed.
+* The description words are for a future enhancement where users can search for other users with a similar set of words.
+
+![404](docs/profile.JPG)
+
 
 ## Testing
 
 All details on testing can be found [here](TESTING.MD)
 
-## Technoligies & Tools
+## Technologies & Tools
 
+* Github Codepsaces (Ubuntu 22.04.2 LTS)
+* Python 3.8.12
 * Bootstrap 5.3
 * Jquery 3.7.0
-* Django
+* Django 3.2.19
+* HMTL 5
+* CSS 3
+
+## Packages
+
+You can check all the packages and their versions in the [requirements.txt](requirements.txt)
 
 ## Deployment
 
-* fork repo 
-* 
-* setup postgress or db of choice
-* setup cloud storage of choice
-deploy to Heroku
+Below is a general guide for deplying this application yourself.
 
-* create a env.py file locally with these settings, or alter them depending on your choice of cloud storage and db
+There are many options for PaaS, database hosting services, and file hosting services. If you use different providers to me then you will need to configure [journee/settings.py](journee/settings.py) further to what I mention below and need to refer to the relevant [Django documetnation](https://docs.djangoproject.com/en/3.2/) for the correct settings.
+
+* Fork the github repo (recommended) or clone the repo locally 
+* Install all the required packages in your chosen enviroment - ( pip install -r requirements.txt )
+* Setup a new Db on https://www.elephantsql.com/
+* setup cloud storage of choice
+miration
+* Deploy to Heroku or your own choice of platform as a service (PaaS)
+* create a env.py in the root directory with these settings, or alter them depending on your choice of cloud storage and db
 
 >import os
 
 >os.environ['SECRET_KEY'] = '--UNIQUE SECRET KEY--'  
 >os.environ['DEV'] = 'True'  
 >os.environ['CLOUDINARY_URL'] = '--URL TO ACCESS CLOUDINARY--'  
-os.environ['DB_PASSWORD'] = '--PASSWORD FOR DB CONNECTION--'
+>os.environ['DB_PASSWORD'] = '--PASSWORD FOR DB CONNECTION--'
 
 
 
@@ -237,9 +293,10 @@ os.environ['DB_PASSWORD'] = '--PASSWORD FOR DB CONNECTION--'
 
 * Full encrption of all user journal and profile information
 * Ability to search users based on their description words
-* Ability to follow other users and have a dedicated page view of their pages
+* Ability to follow other users and have a dedicated page view of their pages, while keeping the experince passive and unintrusive
 
 ## Credits & Acknowlegements
 
-* Boot strap docs
-* Django docs
+* Code Institues Learning Material
+* [Daisy McGirr's](https://www.youtube.com/@IonaFrisbee) really relaxed and informative tutorials
+* [Tech With Tim's](https://www.youtube.com/@TechWithTim) huge catalog of really easy to digest tutorials
