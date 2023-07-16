@@ -2,7 +2,7 @@
 
 * For this project I decided to focus on a full suite of manual tests based around the core user experience.
 * I based the tests around the end to end user journey with a foundation in the project user stories
-* The test scope cover all areas of this project code across HTML, CSS, Python and JS
+* The test scope covers all areas of this project code across HTML, CSS, Python and JS
 
 ### Validators
 

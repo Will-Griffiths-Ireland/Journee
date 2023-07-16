@@ -127,7 +127,7 @@ The user account creation utlizes django-allauth
 
 ### Message Notifications
 
-All user interactions with the database will result in an onscreen message that is diaplyed in the top center of the screen for 3 seconds before it fades away.
+All user interactions with the database will result in an onscreen message that is displayed in the top center of the screen for 3 seconds before it fades away.
 
 * Sign in / out
 * Adds
@@ -155,7 +155,7 @@ Once a user has an account and is signed in they can create a journal entry.
 * The day image is basically for the photo the user thinks will sum up their day. Again if they choose not to then the logo is used.
 * Users are blocked from uploading files other than image files
 * Images are resized to 200px for self images and 800px width for day images and encoded as webp for optimum file sizes
-* The user is limited to a single journal page per day and will get a warning if they already have one whihc has a link to it. Please note that while I was testing and creating content to fill the site I disabled the date check so thats why you will see some users with multiple pages for the same day.
+* The user is limited to a single journal page per day and will get a warning if they already have one which has a link to it. Please note that while I was testing and creating content to fill the site I disabled the date check so thats why you will see multiple pages for the same day.
 
 ![Page Exists warning](docs/add_page.JPG)
 
@@ -228,7 +228,7 @@ Users have a search box in the top left of the navbar so they can search for oth
 * Each journal entry has functionality to track how many views it has had.
 * This allows a user to know how many others viewed their public journal page.
 * The count is also used in picking content for the showcase page.
-* The logic delibrately counts every single view to allow for a simulated production expereince during testing and review.
+* The logic deliberately counts every single view to allow for a simulated production experience during testing and review.
 * With a launched site this functionality would be modified to use something like Django-Hitcount so that only unique views per IP would be counted
 
 ![Views](docs/views.JPG)
@@ -241,12 +241,12 @@ Standed errors such as 500, 404 and 403 have custom templates that are displayed
 
 ### Profile Page
 
-The users extended profile is optional. The site is fully functional for them without adding this. The purpose of the profile is to capture users preferences and customise their experince further.
+The extended profile is optional. The site is fully functional without adding this. The purpose of the profile is to capture users preferences and customise their experience further.
 
 * Once a user has added a profile they can edit it in the future
 * None of the fields are mandatory
-* The primary funcational field for version 1 is the option to choose if new pages are set to be made public. If the user enables this then any new journal pages they create will have the checkbox to make them public checked.
-* Name fields are for future fucntionality where you user can choose how their name is displayed.
+* The primary functional field for version 1 is the option to choose if new pages are set to be made public. If the user enables this, then any new journal pages they create will have the checkbox to make them public checked.
+* Name fields are for future fucntionality where a user can choose how their name is displayed.
 * The description words are for a future enhancement where users can search for other users with a similar set of words.
 
 ![404](docs/profile.JPG)
@@ -258,20 +258,24 @@ All details on testing can be found [here](TESTING.MD)
 
 ## Technologies & Tools
 
-* Github Codepsaces (Ubuntu 22.04.2 LTS)
+* Github & Codespaces (Ubuntu 22.04.2 LTS)
 * Python 3.8.12
 * Bootstrap 5.3
 * Jquery 3.7.0
 * Django 3.2.19
 * HMTL 5
 * CSS 3
-* SQLDraw
+* Javascript
+* DrawSQL
 * Paint.net
 * MS Powerpoint
+* Heroku
+* cloudinary.com
+* elephantsql.com
 
 ## Packages
 
-You can check all the packages and their versions in the [requirements.txt](requirements.txt)
+You can check all the packages/libs and their versions in the [requirements.txt](requirements.txt)
 
 ## Deployment
 
@@ -290,7 +294,7 @@ This repo is built on template the code institue developed (.devcontainer) that 
 * Update the DATABASE dictionary in settings.py to point to your HOST/NAME/USER
 * Setup an account on http://www.Cloudinary.com
 * Create an env.py in your projects root and add it the .gitignore file,then add the below code with these settings
-* Update the secret key with a random string of your choosing, and update the elephantsql DB_PASSWORD with yor own, finally put your own cloudinary connection url in
+* Update the secret key with a random string of your choosing, and update the elephantsql DB_PASSWORD with your own, finally put your own cloudinary connection url in
 >import os
 >os.environ['SECRET_KEY'] = '--UNIQUE SECRET KEY--'  
 >os.environ['DEV'] = 'True'  
