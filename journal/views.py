@@ -74,7 +74,7 @@ class ViewProfilePage(DetailView):
 
 class JournalSearch(ListView):
     """
-    View a journal entry
+    Search and display journals
     """
     template_name = "journal/journal_search.html"
     model = Journal

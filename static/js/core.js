@@ -79,7 +79,7 @@
     });
 })();
 
-// function to remove user action messages
+// function to remove user action messages after 3 seconds
 
 setTimeout(function () {
     // Closing the alert

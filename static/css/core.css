@@ -4,7 +4,6 @@
 
 :root {
 
-
     --cherry_bomb: 'Cherry Bomb One',
         cursive;
     --dancing_script: 'Dancing Script',
@@ -64,7 +63,6 @@
         'GRAD' 200,
         'opsz' 48;
 }
-
 
 /* ###### NAVBAR STYLING ###### */
 
@@ -155,8 +153,6 @@ footer a {
 }
 
 /* ###### JOURNAL PAGE PREVIEW CARDS ###### */
-
-
 
 .card {
     height: 95%;

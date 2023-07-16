@@ -7,12 +7,13 @@
 ### Validators
 
 * All __rendered__ custom html was validated with https://validator.w3.org/ and any minor issues resolved.
-* CSS was validated with ...
-* All __custom__ Python code was linted along the way and validated in the CI tool
+* CSS was validated with https://jigsaw.w3.org/css-validator/ and the only issue was a callout was saying the scale property doesn't exist ( I had the same on previous projects)
+* All __custom__ Python code was linted along the way and validated in the CI tool https://pep8ci.herokuapp.com/
+* I checked the JS file in JShint and no issues were reported (The code was part of bootstraps guide for setting up the colour theming)
 
 ### Lighthouse Scores
 
-The sites lighthouse results were good. The callout on mobile tests were due to image sizes but I already had them in a sweet spot to work for both desktop and mobile, lighthouse has some agressive ideas about mobile sizes that are a bit outdated in todays world of high res screen phones we have close to our faces :)
+The sites lighthouse results were good. The callout on mobile tests were due to image sizes but I already had them in a sweet spot to work for both desktop and mobile without ending up with poor quality
 
 ![Lighthouse Desktop](docs/lighthouse_desktop.JPG)
 
